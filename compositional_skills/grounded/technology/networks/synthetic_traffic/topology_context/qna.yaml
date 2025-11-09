@@ -1,0 +1,40 @@
+version: 3
+task_description: |
+  Encode and reason about network topology: hosts, subnets, routers, VLANs, and how flows traverse them.
+created_by: OliverB32
+seed_examples:
+  - context: |
+      | Node   | IP         | Role    |
+      |--------|------------|---------|
+      | Rtr1   | 10.0.0.1   | Gateway |
+      | HostA  | 10.0.0.2   | Client  |
+      | HostB  | 10.0.0.3   | Server  |
+    question: |
+      Which node is the gateway for HostA and HostB?
+    answer: |
+      Rtr1 (10.0.0.1) is the gateway for both hosts.
+  - context: |
+      Topology: Host in subnet 192.168.10.0/24 sends to 192.168.20.5/24; gateway 192.168.10.1 routes to 192.168.20.1
+    question: |
+      Describe the path packets take from the host to the destination.
+    answer: |
+      Host -> local gateway 192.168.10.1 -> inter-subnet route -> gateway 192.168.20.1 -> destination.
+  - context: |
+      VLANs:
+      HostA VLAN 10 (10.0.10.2), HostB VLAN 20 (10.0.20.2), trunk to router.
+    question: |
+      How to annotate packets to retain VLAN context in generated traffic?
+    answer: |
+      Include VLAN tag metadata per frame: {"vlan":10,"src":"10.0.10.2"} so replay preserves segmentation.
+  - context: |
+      NAT box maps internal 172.16.0.2 to public 198.51.100.3 for outbound traffic.
+    question: |
+      When generating return traffic, which IP should appear as destination externally and internally?
+    answer: |
+      Externally: destination = 198.51.100.3; internally the NAT should map it to 172.16.0.2 in the captured internal trace.
+  - context: |
+      Multi-hop: Host -> Switch -> RouterA -> RouterB -> Server.
+    question: |
+      For per-hop latency modeling, where is latency applied and how recorded?
+    answer: |
+      Apply per-hop delays at each router/switch stage; record cumulative timestamp at egress of each hop to allow realistic RTT calculations.

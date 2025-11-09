@@ -1,0 +1,43 @@
+version: 3
+task_description: |
+  Anonymize and sanitize sensitive identifiers (IP, MAC, hostnames) while preserving
+  structural and statistical properties for realistic synthetic datasets.
+created_by: OliverB32
+seed_examples:
+  - context: |
+      | Original IP     | Role   |
+      |-----------------|--------|
+      | 192.168.1.25    | Client |
+      | 192.168.1.1     | GW     |
+    question: |
+      Replace IPs preserving subnet relationships (internal->10.0.0.0/24).
+    answer: |
+      10.0.0.25 (Client), 10.0.0.1 (GW)
+  - context: |
+      | Original MAC            |
+      |-------------------------|
+      | 00:11:22:33:44:55       |
+    question: |
+      Provide a deterministic anonymized MAC preserving vendor prefix.
+    answer: |
+      Replace OUI but keep local uniqueness, e.g. "02:11:22:33:44:55" (locally administered bit set).
+  - context: |
+      Hostnames: "alice-workstation.company.internal"
+    question: |
+      How to sanitize hostnames while keeping role semantics?
+    answer: |
+      Map to pseudonyms preserving role: "host-client-01.local" and store mapping in a separate mapping file for reproducibility.
+  - context: |
+      | Original public IP | Observed |
+      |--------------------|----------|
+      | 198.51.100.45      | Outbound |
+    question: |
+      When anonymizing public IPs in aggregated datasets, what's a safe approach?
+    answer: |
+      Hash the IP into a stable token (e.g., HMAC with key) and optionally map to an IP in reserved/test space for realism.
+  - context: |
+      Dataset contains small payloads with usernames in cleartext ("bob", "admin").
+    question: |
+      How to sanitize application-layer identifiers while preserving frequency?
+    answer: |
+      Replace with tokens preserving cardinality and frequency (e.g., user_01, user_02) using deterministic mapping.

@@ -1,0 +1,86 @@
+version: 3
+domain: IDS
+created_by: OliverB32
+seed_examples:
+  - context: |
+      An intrusion detection system (IDS) is a device or software application that monitors a network or systems for malicious activity or policy violations. When suspicious activity is detected, the IDS typically reports alerts to an administrator or sends data to a central security information and event management (SIEM) system for further analysis.
+    questions_and_answers:
+      - question: |
+          What is an intrusion detection system (IDS)?
+        answer: |
+          An IDS is a device or software application that monitors networks or systems for malicious activity or policy violations and reports alerts to administrators or central systems.
+      - question: |
+          What happens when an IDS detects suspicious activity?
+        answer: |
+          The IDS typically generates an alert for an administrator or forwards the event to a SIEM for correlation, logging, and further analysis.
+      - question: |
+          What is a SIEM and how does it relate to IDS?
+        answer: |
+          A SIEM (Security Information and Event Management) aggregates and correlates logs and alerts from multiple sources, including IDSs, to help distinguish real threats from false positives and provide centralized incident visibility.
+  - context: |
+      IDSs are commonly classified as network intrusion detection systems (NIDS) and host-based intrusion detection systems (HIDS). NIDS are deployed at strategic points to analyze passing network traffic for all devices on a subnet. HIDS run on individual hosts and monitor host-specific indicators such as file integrity, log entries, and local system calls.
+    questions_and_answers:
+      - question: |
+          What are the two main deployment types of IDS?
+        answer: |
+          The two main types are Network Intrusion Detection Systems (NIDS) and Host-based Intrusion Detection Systems (HIDS).
+      - question: |
+          How does a NIDS differ from a HIDS?
+        answer: |
+          A NIDS monitors network traffic across subnets and multiple hosts, while a HIDS runs on a specific host and observes local activities like file changes and system logs.
+      - question: |
+          Where might you place a NIDS in a network for best coverage?
+        answer: |
+          NIDS are typically placed at strategic points such as behind firewalls or at network chokepoints to observe inbound and outbound traffic for a subnet.
+  - context: |
+      IDSs use different detection methods. Signature-based detection compares traffic or events to known patterns of attacks (signatures). Anomaly-based detection models normal behavior and flags deviations, often using statistical methods or machine learning. Reputation-based detection uses external threat intelligence and reputation scores to assess the risk of IPs or domains.
+    questions_and_answers:
+      - question: |
+          What is signature-based detection in IDS?
+        answer: |
+          Signature-based detection identifies attacks by matching traffic or events to known patterns or signatures, making it effective for known threats but weak against novel attacks.
+      - question: |
+          What is anomaly-based detection and what is a common drawback?
+        answer: |
+          Anomaly-based detection builds a model of normal behavior and flags deviations; a common drawback is a higher rate of false positives when legitimate behavior differs from the model.
+      - question: |
+          How does reputation-based detection work?
+        answer: |
+          Reputation-based detection consults external threat intelligence or reputation scores (for IPs, domains, etc.) to help classify activity as suspicious or benign.
+  - context: |
+      Some IDS products include response capabilities; when they do, they are often called intrusion prevention systems (IPS) or intrusion detection and prevention systems (IDPS). These systems can attempt to block attacks by resetting connections, modifying firewall rules, or taking other active measures. IDS systems are also commonly integrated with honeypots to attract and analyze malicious activity.
+    questions_and_answers:
+      - question: |
+          What is the difference between an IDS and an IPS?
+        answer: |
+          An IDS monitors and alerts on suspicious activity, while an IPS can actively block or mitigate detected attacks in real time.
+      - question: |
+          What are common response actions an IPS might take?
+        answer: |
+          An IPS may drop malicious packets, reset TCP connections, reconfigure firewall rules, or quarantine affected hosts to stop an attack.
+      - question: |
+          How can honeypots complement IDS deployments?
+        answer: |
+          Honeypots attract attackers and capture detailed behavior, which can be analyzed to improve signatures, anomaly models, and overall threat understanding.
+  - context: |
+      IDSs have limitations and can be evaded. Limitations include false positives, false negatives, encrypted traffic visibility issues, and performance overhead. Evasion techniques include fragmentation, encryption, traffic obfuscation, and stealthy low-and-slow attacks that blend into normal traffic patterns.
+    questions_and_answers:
+      - question: |
+          What are two common limitations of IDSs?
+        answer: |
+          Common limitations are false positives (benign activity flagged as malicious) and false negatives (malicious activity not detected).
+      - question: |
+          Why can encrypted traffic be a challenge for IDS?
+        answer: |
+          Encrypted traffic prevents an IDS from inspecting payloads, reducing visibility into potential attacks unless traffic is decrypted or metadata-based detection is used.
+      - question: |
+          Name some evasion techniques attackers use to bypass IDS detection.
+        answer: |
+          Attackers may use packet fragmentation, payload obfuscation, encryption, and low-and-slow techniques to evade IDS detection.
+document_outline: |
+  The Wikipedia article on Intrusion Detection Systems (IDS) defines IDS as devices or software that monitor networks or hosts for malicious activity or policy violations. It explains core classifications such as network-based (NIDS) and host-based (HIDS) systems, detection methods including signature-based, anomaly-based, and reputation-based approaches, and the related concept of intrusion prevention systems (IPS). The article also covers operational considerations such as placement, integration with SIEM and honeypots, limitations like false positives and encrypted-traffic blind spots, and common evasion techniques.
+document:
+  repo: $HOME/projects/instructlab/knowledge_docs
+  commit: 605065598f0f61a1fec7a5424e9cfd40a238c9a9
+  patterns:
+    - Intrusion_detection_system.md

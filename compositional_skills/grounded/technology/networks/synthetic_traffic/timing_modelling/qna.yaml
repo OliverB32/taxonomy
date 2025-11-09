@@ -1,0 +1,38 @@
+version: 3
+task_description: |
+  Model inter-packet timing and arrival distributions (Poisson, uniform, fixed jitter),
+  produce timestamp sequences, and summarize timing statistics.
+created_by: OliverB32
+seed_examples:
+  - context: |
+      | Flow | count | mean_ms | std_ms |
+      |------|-------|---------|--------|
+      | X    | 4     | 10      | 2      |
+    question: |
+      Produce a plausible sequence of timestamps (seconds) starting at 0 using mean and std dev.
+    answer: |
+      [0.000, 0.011, 0.021, 0.032]
+  - context: |
+      Timing model: Poisson arrivals with lambda=50 per second (mean inter-arrival 20ms). Generate five intervals.
+    question: |
+      Provide five sample inter-arrival times in seconds consistent with Poisson.
+    answer: |
+      [0.018, 0.022, 0.030, 0.010, 0.024]
+  - context: |
+      Flow with fixed 100ms spacing but ±10ms uniform jitter, 3 packets.
+    question: |
+      Give three timestamps (seconds) with jitter applied.
+    answer: |
+      [0.000, 0.090, 0.205]
+  - context: |
+      Observed timestamps (s): [0.0, 0.05, 0.07, 0.2, 0.25]
+    question: |
+      Compute mean inter-arrival time and identify outliers (>2x mean).
+    answer: |
+      Inter-arrivals: [0.05,0.02,0.13,0.05]; mean = 0.0625s; outlier: 0.13s (>2*mean).
+  - context: |
+      Burst scenario: 10 packets in ~50ms, then idle 500ms. Describe a timing model for bursts.
+    question: |
+      How to model burst with two-state (ON/OFF) process?
+    answer: |
+      Use an ON state with high-rate arrivals (e.g., inter-arrival mean 5ms) for burst duration; OFF state long idle with mean 500ms; switch between states using geometric/exponential durations.

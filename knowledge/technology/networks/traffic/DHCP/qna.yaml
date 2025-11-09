@@ -1,0 +1,86 @@
+version: 3
+domain: Dynamic Host Configuration Protocol
+created_by: OliverB32
+seed_examples:
+  - context: |
+      The Dynamic Host Configuration Protocol (DHCP) is a network management protocol used to automatically assign IP addresses and other network configuration parameters to devices on a network. This allows devices to communicate on an IP network without the need for manual configuration.
+    questions_and_answers:
+      - question: |
+          What does DHCP stand for?
+        answer: |
+          DHCP stands for Dynamic Host Configuration Protocol.
+      - question: |
+          What is the main purpose of DHCP?
+        answer: |
+          DHCP automatically assigns IP addresses and network configuration settings to devices, eliminating the need for manual setup.
+      - question: |
+          Why is DHCP important for network management?
+        answer: |
+          DHCP simplifies network administration by automating IP address assignment and reducing configuration errors.
+  - context: |
+      DHCP operates using a client-server model. The DHCP server maintains a pool of available IP addresses and configuration settings, while DHCP clients request this information when they connect to the network. The server leases an IP address to the client for a specific period, known as the lease duration.
+    questions_and_answers:
+      - question: |
+          How does DHCP operate in a network?
+        answer: |
+          DHCP uses a client-server model where the server assigns IP addresses and configuration data to clients.
+      - question: |
+          What is an IP lease in DHCP?
+        answer: |
+          An IP lease is the temporary allocation of an IP address to a device for a defined duration.
+      - question: |
+          Who manages the pool of available IP addresses in a DHCP network?
+        answer: |
+          The DHCP server manages and distributes IP addresses from its available address pool.
+  - context: |
+      The DHCP address assignment process typically follows four stages, often abbreviated as DORA: Discover, Offer, Request, and Acknowledge. During this sequence, the client broadcasts a discovery message, the server offers an address, the client requests it, and the server acknowledges the assignment.
+    questions_and_answers:
+      - question: |
+          What does the acronym DORA stand for in the context of DHCP?
+        answer: |
+          DORA stands for Discover, Offer, Request, and Acknowledge—the four steps in the DHCP lease process.
+      - question: |
+          What happens during the DHCP Discover stage?
+        answer: |
+          The client broadcasts a DHCP Discover message to find available DHCP servers on the network.
+      - question: |
+          What is the final step in the DHCP process, and what occurs during it?
+        answer: |
+          The final step is Acknowledge, where the DHCP server confirms the lease and finalizes IP address assignment.
+  - context: |
+      DHCP can provide additional configuration parameters beyond IP addresses, such as subnet masks, default gateways, domain name servers (DNS), and domain names. These options help clients integrate seamlessly into the network and access external resources.
+    questions_and_answers:
+      - question: |
+          Besides IP addresses, what other information can DHCP provide to clients?
+        answer: |
+          DHCP can also provide subnet masks, default gateways, DNS servers, and domain names.
+      - question: |
+          Why does DHCP provide configuration options beyond IP addresses?
+        answer: |
+          These additional settings allow clients to fully participate in the network and access other devices and services.
+      - question: |
+          Which DHCP option typically provides information about DNS servers?
+        answer: |
+          The DHCP option that provides DNS server information is Option 6.
+  - context: |
+      DHCP supports both IPv4 and IPv6. In IPv6 networks, DHCPv6 performs a similar function but may operate alongside other address assignment mechanisms like Stateless Address Autoconfiguration (SLAAC). DHCPv6 provides more control and flexibility for network administrators in assigning IPv6 addresses and settings.
+    questions_and_answers:
+      - question: |
+          What is DHCPv6?
+        answer: |
+          DHCPv6 is the version of the Dynamic Host Configuration Protocol designed to assign IPv6 addresses and configuration settings.
+      - question: |
+          How does DHCPv6 differ from traditional DHCP for IPv4?
+        answer: |
+          DHCPv6 works with IPv6 networks and can coexist with SLAAC, offering administrators more control over address assignments.
+      - question: |
+          What is SLAAC in the context of IPv6 addressing?
+        answer: |
+          SLAAC, or Stateless Address Autoconfiguration, is an IPv6 mechanism that allows devices to configure their own addresses without a DHCP server.
+document_outline: |
+  The Wikipedia article on the Dynamic Host Configuration Protocol (DHCP) explains how DHCP automates the assignment of IP addresses and network configuration information. It describes the client-server model in which servers lease IP addresses to clients, the DORA process that governs address assignment, and the additional configuration data DHCP can provide. The article also discusses DHCP’s role in both IPv4 and IPv6 environments, including DHCPv6 and its relationship with SLAAC. DHCP is presented as a key protocol for simplifying network management and reducing configuration errors.
+document:
+  repo: $HOME/projects/instructlab/knowledge_docs
+  commit: 6654628eb16e5e1bf5f9cc7f3102d2671b5ca890
+  patterns:
+    - Dynamic_Host_Configuration_Protocol.md

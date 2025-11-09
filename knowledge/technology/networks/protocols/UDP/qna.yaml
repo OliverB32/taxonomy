@@ -1,0 +1,86 @@
+version: 3
+domain: User Datagram Protocol
+created_by: OliverB32
+seed_examples:
+  - context: |
+      The User Datagram Protocol (UDP) is one of the core protocols of the Internet protocol suite. It operates at the transport layer and provides a connectionless communication service between applications. UDP emphasizes speed over reliability, making it suitable for applications where timely delivery is more important than perfect accuracy.
+    questions_and_answers:
+      - question: |
+          What is the User Datagram Protocol (UDP)?
+        answer: |
+          UDP is a core Internet protocol that provides a connectionless communication service at the transport layer, focusing on speed and simplicity rather than reliability.
+      - question: |
+          How does UDP differ from TCP?
+        answer: |
+          Unlike TCP, UDP does not establish a connection, perform error correction, or guarantee packet delivery, making it faster but less reliable.
+      - question: |
+          What types of applications typically use UDP?
+        answer: |
+          Applications such as video streaming, online gaming, and voice-over-IP (VoIP) often use UDP because they prioritize low latency over guaranteed delivery.
+  - context: |
+      UDP is a connectionless protocol, meaning it does not establish a session before sending data. Each message, known as a datagram, is sent independently and may arrive out of order or not at all. This design minimizes overhead, allowing for faster data transmission but at the cost of reliability.
+    questions_and_answers:
+      - question: |
+          What does it mean that UDP is connectionless?
+        answer: |
+          Being connectionless means that UDP sends data without establishing or maintaining a dedicated communication session between sender and receiver.
+      - question: |
+          What are UDP messages called?
+        answer: |
+          UDP messages are called datagrams.
+      - question: |
+          What is the trade-off of using a connectionless protocol like UDP?
+        answer: |
+          The trade-off is lower reliability and lack of guaranteed delivery in exchange for faster transmission and reduced overhead.
+  - context: |
+      The UDP header is minimal, consisting of only four fields: source port, destination port, length, and checksum. This simple structure reduces processing time and overhead. The checksum is optional in IPv4 but mandatory in IPv6 to ensure data integrity.
+    questions_and_answers:
+      - question: |
+          What are the four fields in a UDP header?
+        answer: |
+          The UDP header includes the source port, destination port, length, and checksum fields.
+      - question: |
+          Why does UDP have a minimal header structure?
+        answer: |
+          A minimal header structure reduces processing overhead, allowing faster data transmission.
+      - question: |
+          Is the UDP checksum always required?
+        answer: |
+          The checksum is optional in IPv4 but required in IPv6 to provide basic error detection.
+  - context: |
+      UDP provides no mechanisms for retransmission, ordering, or flow control. If data is lost, duplicated, or arrives out of order, the application using UDP must handle these issues if necessary. This makes UDP well-suited for applications that can tolerate data loss or perform their own error correction.
+    questions_and_answers:
+      - question: |
+          Does UDP provide retransmission or flow control?
+        answer: |
+          No. UDP does not include retransmission, ordering, or flow control mechanisms.
+      - question: |
+          How does UDP handle lost or out-of-order packets?
+        answer: |
+          UDP itself does not handle these issues; it is up to the application layer to manage any necessary corrections.
+      - question: |
+          Why might an application choose to use UDP despite its unreliability?
+        answer: |
+          Applications may prefer UDP for its low latency and reduced overhead, especially when occasional packet loss is acceptable.
+  - context: |
+      UDP is widely used for real-time and multicast applications, such as DNS queries, streaming media, online gaming, and VoIP. These use cases benefit from UDP’s low-latency characteristics, even if some data packets are lost. In contrast, applications requiring guaranteed delivery typically use TCP instead.
+    questions_and_answers:
+      - question: |
+          What are some common applications that use UDP?
+        answer: |
+          UDP is commonly used for DNS queries, streaming media, online gaming, and voice-over-IP (VoIP).
+      - question: |
+          Why is UDP suitable for real-time applications?
+        answer: |
+          Because UDP minimizes latency and does not wait for acknowledgment or retransmission, it supports real-time communication more effectively.
+      - question: |
+          Which protocol is preferred when reliable data delivery is required?
+        answer: |
+          TCP is preferred for applications that require reliable, ordered data delivery, such as file transfers or emails.
+document_outline: |
+  The Wikipedia article on the User Datagram Protocol (UDP) describes it as a core Internet transport layer protocol that provides connectionless, low-overhead communication between applications. It explains how UDP differs from TCP by emphasizing speed and simplicity over reliability. The article covers UDP’s header structure, lack of retransmission and ordering mechanisms, and its use cases in applications like streaming, gaming, DNS, and VoIP. It also discusses how UDP fits into the Internet protocol suite and why it remains essential for time-sensitive data transmission.
+document:
+  repo: $HOME/projects/instructlab/knowledge_docs
+  commit: 362723a73421bed199e10f9418347b661f43b985
+  patterns:
+    - User_Datagram_Protocol.md

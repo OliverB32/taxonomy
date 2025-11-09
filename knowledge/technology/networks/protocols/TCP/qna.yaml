@@ -1,0 +1,86 @@
+version: 3
+domain: Transmission Control Protocol
+created_by: OliverB32
+seed_examples:
+  - context: |
+      The Transmission Control Protocol (TCP) is one of the main protocols of the Internet protocol suite. It originated in the initial network implementation in which it complemented the Internet Protocol (IP). Therefore, the entire suite is commonly referred to as TCP/IP. TCP provides reliable, ordered, and error-checked delivery of a stream of bytes between applications running on hosts communicating via an IP network.
+    questions_and_answers:
+      - question: |
+          What is the Transmission Control Protocol (TCP)?
+        answer: |
+          TCP is one of the core protocols of the Internet protocol suite, providing reliable, ordered, and error-checked delivery of data between applications across IP networks.
+      - question: |
+          How does TCP relate to IP?
+        answer: |
+          TCP works alongside the Internet Protocol (IP), forming the TCP/IP suite, where IP handles addressing and routing and TCP ensures reliable data delivery.
+      - question: |
+          What kind of data transfer does TCP provide?
+        answer: |
+          TCP provides a reliable, connection-oriented, and byte-stream-based method of data transfer between networked devices.
+  - context: |
+      TCP establishes a connection using a process known as the three-way handshake. The process involves three steps: the initiating host sends a SYN message, the receiving host replies with a SYN-ACK message, and the initiator responds with an ACK. This handshake establishes a reliable connection before data transmission begins.
+    questions_and_answers:
+      - question: |
+          What is the purpose of the TCP three-way handshake?
+        answer: |
+          The three-way handshake establishes a reliable connection between two hosts before data transmission begins.
+      - question: |
+          What are the steps in the TCP three-way handshake?
+        answer: |
+          The initiating host sends a SYN message, the receiver replies with a SYN-ACK, and the initiator responds with an ACK to establish the connection.
+      - question: |
+          Why does TCP use a three-step handshake instead of a two-step process?
+        answer: |
+          The three-step handshake ensures both sides can send and receive data, preventing synchronization errors and confirming bidirectional communication.
+  - context: |
+      TCP uses various mechanisms to ensure reliable communication, including sequence numbers, acknowledgments (ACKs), and retransmissions. Data segments are numbered so that lost or out-of-order packets can be detected and retransmitted. Acknowledgments confirm successful receipt of data, ensuring the connection remains reliable.
+    questions_and_answers:
+      - question: |
+          How does TCP ensure reliable data delivery?
+        answer: |
+          TCP ensures reliability using sequence numbers, acknowledgments, and retransmissions to detect and correct packet loss or ordering errors.
+      - question: |
+          What is the role of acknowledgments (ACKs) in TCP?
+        answer: |
+          ACKs inform the sender that data has been successfully received, allowing the sender to manage retransmissions and maintain flow control.
+      - question: |
+          Why does TCP use sequence numbers?
+        answer: |
+          Sequence numbers allow TCP to order data correctly and detect missing or duplicate segments during transmission.
+  - context: |
+      TCP implements flow control and congestion control mechanisms to optimize network performance. Flow control, achieved through a sliding window protocol, prevents the sender from overwhelming the receiver. Congestion control adjusts the rate of transmission based on network conditions to avoid network congestion and packet loss.
+    questions_and_answers:
+      - question: |
+          What is flow control in TCP and how is it achieved?
+        answer: |
+          Flow control prevents the sender from overwhelming the receiver, and it is implemented using the sliding window mechanism.
+      - question: |
+          What is the purpose of congestion control in TCP?
+        answer: |
+          Congestion control regulates the data transmission rate to avoid overloading the network and causing packet loss.
+      - question: |
+          How do flow control and congestion control differ in TCP?
+        answer: |
+          Flow control manages data transfer between sender and receiver, while congestion control manages data flow across the network to prevent congestion.
+  - context: |
+      TCP operates at the transport layer of the OSI and Internet models. It is used by many important Internet applications, including the World Wide Web, email, and file transfer. Common TCP ports include 80 for HTTP, 443 for HTTPS, and 25 for SMTP. TCP’s reliability and ordered delivery make it suitable for applications where data integrity is crucial.
+    questions_and_answers:
+      - question: |
+          At which layer of the OSI model does TCP operate?
+        answer: |
+          TCP operates at the transport layer of the OSI model.
+      - question: |
+          What are some examples of applications that use TCP?
+        answer: |
+          Applications like web browsing (HTTP/HTTPS), email (SMTP), and file transfers (FTP) commonly use TCP for reliable communication.
+      - question: |
+          Why is TCP preferred for applications like web and email?
+        answer: |
+          Because TCP ensures reliable, ordered, and error-checked delivery, it is ideal for applications requiring accurate data transmission.
+document_outline: |
+  The Wikipedia article on the Transmission Control Protocol (TCP) describes it as a core component of the Internet protocol suite that provides reliable, ordered, and error-checked data transmission between hosts. It explains how TCP works with IP, its connection-oriented nature, and features like the three-way handshake, sequence numbering, acknowledgments, retransmissions, flow control, and congestion control. The article also discusses TCP’s placement at the transport layer and its use in major Internet applications such as HTTP, HTTPS, SMTP, and FTP.
+document:
+  repo: $HOME/projects/instructlab/knowledge_docs
+  commit: 7b6e67db788a8a65b5a8d17306eb8f9ba8758dce
+  patterns:
+    - Transmission_Control_Protocol.md

@@ -1,0 +1,86 @@
+version: 3
+domain: Encryption
+created_by: OliverB32
+seed_examples:
+  - context: |
+      Encryption is the process of transforming information (plaintext) into an unreadable form (ciphertext) to protect its confidentiality. Only parties possessing the appropriate decryption key can reverse the process and recover the original information.
+    questions_and_answers:
+      - question: |
+          What is encryption?
+        answer: |
+          Encryption is the process of converting plaintext into ciphertext to protect confidentiality, so only holders of the correct decryption key can read the original data.
+      - question: |
+          What is ciphertext?
+        answer: |
+          Ciphertext is the encrypted form of data produced by applying an encryption algorithm to plaintext; it is unreadable without the corresponding decryption key.
+      - question: |
+          Why is encryption used?
+        answer: |
+          Encryption is used to protect sensitive information from unauthorized access, ensuring confidentiality during storage and transmission.
+  - context: |
+      There are two main categories of cryptographic algorithms: symmetric-key algorithms, which use the same secret key for encryption and decryption, and asymmetric (public-key) algorithms, which use a public/private key pair where one key encrypts and the other decrypts.
+    questions_and_answers:
+      - question: |
+          What is the difference between symmetric and asymmetric encryption?
+        answer: |
+          Symmetric encryption uses the same secret key for both encryption and decryption, while asymmetric encryption uses a public/private key pair where one key encrypts and the other decrypts.
+      - question: |
+          Give an example of a common symmetric algorithm.
+        answer: |
+          AES (Advanced Encryption Standard) is a widely used symmetric-key algorithm.
+      - question: |
+          Give an example of a common asymmetric algorithm.
+        answer: |
+          RSA and elliptic-curve cryptography (ECC) are common asymmetric algorithms used for key exchange and digital signatures.
+  - context: |
+      Encryption schemes are often combined with other cryptographic primitives. For example, authenticated encryption (AE/AEAD) provides both confidentiality and integrity. Hash functions produce fixed-size digests used for integrity checks and password storage, and digital signatures provide non-repudiation and authentication.
+    questions_and_answers:
+      - question: |
+          What is authenticated encryption (AE/AEAD)?
+        answer: |
+          Authenticated encryption combines confidentiality and integrity in a single scheme, ensuring that ciphertext is both encrypted and tamper-evident.
+      - question: |
+          What is the role of a cryptographic hash function?
+        answer: |
+          A hash function maps data of arbitrary size to a fixed-size digest; it is used for integrity checks, digital signatures, and password hashing.
+      - question: |
+          How do digital signatures relate to encryption?
+        answer: |
+          Digital signatures use asymmetric cryptography to provide authentication and non-repudiation by allowing a signer to produce a verifiable signature bound to a message.
+  - context: |
+      Key management and exchange are critical to secure encryption. Symmetric keys must be distributed securely, while asymmetric methods (like Diffie–Hellman or public-key infrastructure) enable secure key agreement and distribution. Poor key management is a common source of cryptographic failures.
+    questions_and_answers:
+      - question: |
+          Why is key management important in encryption systems?
+        answer: |
+          Key management ensures keys are generated, distributed, stored, rotated, and revoked securely; weak key management undermines the security of any encryption scheme.
+      - question: |
+          What is Diffie–Hellman used for?
+        answer: |
+          Diffie–Hellman is a key-exchange protocol that allows two parties to negotiate a shared secret over an insecure channel without directly transmitting the secret.
+      - question: |
+          What is a Public Key Infrastructure (PKI)?
+        answer: |
+          PKI is a framework for issuing, managing, and validating digital certificates that bind public keys to identities, supporting trust and authentication.
+  - context: |
+      Cryptographic algorithms and best practices evolve over time. Older algorithms and modes (e.g., DES, RC4, MD5, or unauthenticated CBC usage) have been deprecated due to vulnerabilities. Modern guidance recommends strong, standardized algorithms (AES, ChaCha20-Poly1305), authenticated modes, proper randomness, and attention to future threats such as quantum computing.
+    questions_and_answers:
+      - question: |
+          Why are some cryptographic algorithms deprecated?
+        answer: |
+          Algorithms are deprecated when weaknesses are discovered or when they no longer meet current security requirements, making them vulnerable to practical attacks.
+      - question: |
+          Name two modern, recommended authenticated ciphers.
+        answer: |
+          AES-GCM and ChaCha20-Poly1305 are modern authenticated encryption algorithms commonly recommended for secure communications.
+      - question: |
+          What future threat to current public-key algorithms is commonly discussed?
+        answer: |
+          Quantum computing poses a potential future threat to many current public-key algorithms (like RSA and ECC), motivating research into post-quantum cryptography.
+document_outline: |
+  The Wikipedia article on Encryption describes the transformation of information to protect confidentiality by converting plaintext into ciphertext using cryptographic algorithms. It distinguishes symmetric-key and asymmetric (public-key) cryptography, explains supporting primitives such as hash functions and digital signatures, and highlights the importance of authenticated encryption and proper key management. The article also covers deprecated algorithms, recommended modern ciphers and modes, and emerging concerns such as quantum-resistant cryptography.
+document:
+  repo: $ILAB/knowledge_docs
+  commit: a90c0c2ec6a464419836b4d42d76c702933ff6b9
+  patterns:
+    - Encryption.md

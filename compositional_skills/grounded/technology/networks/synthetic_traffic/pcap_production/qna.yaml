@@ -1,0 +1,47 @@
+version: 3
+task_description: |
+  Convert structured packet descriptions into JSONL PCAP-style records (one JSON record per frame),
+  suitable for later conversion to .pcap via tooling.
+created_by: OliverB32
+seed_examples:
+  - context: |
+      | Timestamp | src_ip       | dst_ip       | Protocol | Length |
+      |-----------|--------------|--------------|----------|--------|
+      | 0.000123  | 10.0.0.2     | 10.0.0.1     | TCP      | 74     |
+    question: |
+      Output one JSONL record representing this frame.
+    answer: |
+      {"timestamp": 0.000123, "layers": {"ip": {"src":"10.0.0.2","dst":"10.0.0.1"},"tcp":{"length":74,"src_port":null}}}
+  - context: |
+      | ts    | src    | dst      | proto | len |
+      |-------|--------|----------|-------|-----|
+      | 1.234 | 192.0.2.5 | 198.51.100.6 | UDP | 60 |
+    question: |
+      Produce a JSONL line for this UDP packet with basic metadata.
+    answer: |
+      {"timestamp": 1.234, "src_ip":"192.0.2.5","dst_ip":"198.51.100.6","protocol":"UDP","length":60}
+  - context: |
+      Two frames:
+      0.1s 192.168.1.2 -> 192.168.1.1 TCP 66
+      0.14s 192.168.1.1 -> 192.168.1.2 TCP 54
+    question: |
+      Convert to two JSONL lines (one per frame).
+    answer: |
+      {"timestamp":0.1,"src_ip":"192.168.1.2","dst_ip":"192.168.1.1","protocol":"TCP","length":66}
+      {"timestamp":0.14,"src_ip":"192.168.1.1","dst_ip":"192.168.1.2","protocol":"TCP","length":54}
+  - context: |
+      | time | src_mac          | dst_mac          | eth_type |
+      |------|------------------|------------------|----------|
+      | 0.05 | 00:aa:bb:cc:dd:01| 00:aa:bb:cc:dd:02| 0x0800   |
+    question: |
+      Create JSONL with ethernet and timestamp fields.
+    answer: |
+      {"timestamp":0.05,"ethernet":{"src":"00:aa:bb:cc:dd:01","dst":"00:aa:bb:cc:dd:02","type":"0x0800"}}
+  - context: |
+      | Timestamp | Description                         |
+      |-----------|-------------------------------------|
+      | 2.5       | fragmented IP packet (frag 1 of 2)  |
+    question: |
+      Represent fragmentation meta in a JSONL record.
+    answer: |
+      {"timestamp":2.5,"ip": {"frag_id":12345,"frag_offset":0,"mf":true},"note":"fragment 1 of 2"}

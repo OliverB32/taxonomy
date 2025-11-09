@@ -1,0 +1,86 @@
+version: 3
+domain: Network Packets
+created_by: OliverB32
+seed_examples:
+  - context: |
+      A network packet is a formatted unit of data carried by a packet-switched network. A packet consists of control information and user data, also known as the payload. Control information provides data needed to deliver the payload, such as source and destination network addresses, error detection codes, and sequencing information.
+    questions_and_answers:
+      - question: |
+          What are the main components of a network packet?
+        answer: |
+          A network packet typically consists of control information and user data (payload). The control information includes details such as source and destination addresses, error detection codes, and sequencing data.
+      - question: |
+          What is the purpose of control information in a network packet?
+        answer: |
+          Control information ensures that the packet is properly delivered, routed, and reconstructed at its destination. It contains addressing, error checking, and sequencing details.
+      - question: |
+          What is another term used for the user data portion of a network packet?
+        answer: |
+          The user data portion of a packet is also called the payload.
+  - context: |
+      When a large message is sent over a network, it is divided into multiple packets. Each packet travels independently through the network and may take different routes to the destination. The packets are then reassembled in the correct order at the receiving end.
+    questions_and_answers:
+      - question: |
+          Why are large messages divided into multiple packets for transmission?
+        answer: |
+          Large messages are divided into smaller packets so they can be transmitted efficiently, allowing them to travel independently across the network and be reassembled later.
+      - question: |
+          Do all packets from a message follow the same route across a network?
+        answer: |
+          No. Packets may take different routes to reach the destination depending on network conditions and routing decisions.
+      - question: |
+          What happens to packets once they reach the destination?
+        answer: |
+          The receiving system reassembles the packets in the correct order to reconstruct the original message.
+  - context: |
+      The structure of a network packet often includes a header, payload, and sometimes a trailer. The header contains metadata about the packet, the payload carries the actual data, and the trailer can contain error-checking information such as a frame check sequence (FCS).
+    questions_and_answers:
+      - question: |
+          What are the three main sections of a typical network packet?
+        answer: |
+          A typical network packet includes a header, a payload, and sometimes a trailer.
+      - question: |
+          What kind of information is found in a packet’s header?
+        answer: |
+          The header includes metadata such as source and destination addresses, protocol information, and packet length.
+      - question: |
+          What is the function of a packet trailer?
+        answer: |
+          The trailer often contains error-checking data, like a frame check sequence (FCS), used to detect transmission errors.
+  - context: |
+      In packet-switched networks, packets are routed independently based on addressing information contained in the header. Common protocols using packet switching include the Internet Protocol (IP), which operates at the network layer of the OSI model.
+    questions_and_answers:
+      - question: |
+          How are packets routed in a packet-switched network?
+        answer: |
+          Packets are routed independently according to the addressing information in their headers.
+      - question: |
+          Which protocol commonly uses packet switching at the network layer?
+        answer: |
+          The Internet Protocol (IP) is a common example of a packet-switched protocol operating at the network layer.
+      - question: |
+          At which layer of the OSI model does packet switching primarily operate?
+        answer: |
+          Packet switching primarily operates at the network layer of the OSI model, where protocols like IP handle addressing and routing of packets.
+  - context: |
+      Packet switching contrasts with circuit switching, where a dedicated communication path is established for the duration of a session. Packet-switched networks are generally more efficient because they allow dynamic sharing of network resources among multiple communications.
+    questions_and_answers:
+      - question: |
+          How does packet switching differ from circuit switching?
+        answer: |
+          Packet switching transmits data in discrete packets that may take different routes, while circuit switching establishes a dedicated communication path for the entire session.
+      - question: |
+          Why are packet-switched networks generally considered more efficient?
+        answer: |
+          They are more efficient because they dynamically share network resources among many users instead of reserving a fixed path for each connection.
+      - question: |
+          What type of switching does the Internet primarily use?
+        answer: |
+          The Internet primarily uses packet switching.
+document_outline: |
+  The Wikipedia article on "Network packet" explains how data is transmitted across packet-switched networks in discrete units called packets. It covers the structure of a packet (header, payload, and trailer), the process of segmentation and reassembly, how routing works, and the differences between packet switching and circuit switching. The article also describes protocols like IP that rely on packet-based communication and discusses efficiency benefits of packet-switched systems.
+document:
+  repo: $HOME/projects/instructlab/knowledge_docs
+  commit: 73133e40e4f2b90657037cdb7c33099995366648
+  patterns:
+    - Network_packet.md

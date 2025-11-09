@@ -1,0 +1,86 @@
+version: 3
+domain: Internet Protocol
+created_by: OliverB32
+seed_examples:
+  - context: |
+      The Internet Protocol (IP) is the principal communications protocol in the Internet protocol suite for relaying datagrams (packets) across network boundaries. Its routing function enables internetworking, and essentially establishes the Internet. IP has the task of delivering packets from the source host to the destination host based on the IP addresses in the packet headers.
+    questions_and_answers:
+      - question: |
+          What is the main purpose of the Internet Protocol (IP)?
+        answer: |
+          The Internet Protocols main purpose is to deliver packets from a source host to a destination host across network boundaries using IP addresses.
+      - question: |
+          What is a datagram in the context of IP?
+        answer: |
+          A datagram is a basic transfer unit associated with the Internet Protocol, representing a self-contained packet of data sent across the network.
+      - question: |
+          How does IP enable internetworking?
+        answer: |
+          IP enables internetworking by providing routing functionality that allows packets to move across multiple interconnected networks.
+  - context: |
+      IP is a connectionless protocol, meaning that each packet is treated independently, with no guarantee of delivery, order, or error checking. These responsibilities are handled by higher-level protocols such as the Transmission Control Protocol (TCP). Together, TCP and IP form the foundation of the Internet protocol suite.
+    questions_and_answers:
+      - question: |
+          Is the Internet Protocol connection-oriented or connectionless?
+        answer: |
+          The Internet Protocol is connectionless, meaning each packet is handled independently without prior setup or guaranteed delivery.
+      - question: |
+          Which protocol provides reliability and ordering over IP?
+        answer: |
+          The Transmission Control Protocol (TCP) provides reliability, sequencing, and error-checking functions over IP.
+      - question: |
+          What is the relationship between TCP and IP?
+        answer: |
+          TCP and IP work together to form the core of the Internet protocol suite, with IP handling routing and addressing, and TCP ensuring reliable communication.
+  - context: |
+      The Internet Protocol has two major versions in use: IPv4 and IPv6. IPv4 uses 32-bit addresses and provides around 4.3 billion unique addresses. IPv6, introduced to overcome the limitations of IPv4, uses 128-bit addresses, vastly expanding the available address space and adding features such as simplified header formats and improved support for extensions.
+    questions_and_answers:
+      - question: |
+          What are the two main versions of the Internet Protocol in use today?
+        answer: |
+          The two main versions are IPv4 and IPv6.
+      - question: |
+          Why was IPv6 developed?
+        answer: |
+          IPv6 was developed to overcome the address space limitations of IPv4 and to introduce improvements such as simplified headers and better extensibility.
+      - question: |
+          How many bits are used in IPv4 and IPv6 addresses respectively?
+        answer: |
+          IPv4 addresses use 32 bits, while IPv6 addresses use 128 bits.
+  - context: |
+      The IP header contains essential information required for packet delivery, including the source and destination IP addresses, version information, time-to-live (TTL), and protocol identifiers. Each packet header ensures that routers can forward packets appropriately across the network until they reach their destination.
+    questions_and_answers:
+      - question: |
+          What information does the IP header contain?
+        answer: |
+          The IP header includes details such as source and destination addresses, IP version, time-to-live (TTL), and protocol identifiers.
+      - question: |
+          What is the function of the TTL field in an IP header?
+        answer: |
+          The TTL (Time to Live) field limits the lifespan of a packet by reducing its value at each hop, preventing it from circulating indefinitely.
+      - question: |
+          Why is the IP header important for routers?
+        answer: |
+          Routers use the IP header information to determine where to forward packets and ensure they reach the correct destination.
+  - context: |
+      The Internet Protocol provides only best-effort delivery. It does not guarantee packet delivery, maintain packet order, or protect against duplication. These functions are handled by higher-layer protocols when needed. IP operates at the network layer of the OSI model and the Internet layer of the TCP/IP model.
+    questions_and_answers:
+      - question: |
+          What kind of delivery service does IP provide?
+        answer: |
+          IP provides a best-effort delivery service, meaning it does not guarantee delivery, order, or duplication protection.
+      - question: |
+          At which layer of the OSI model does IP operate?
+        answer: |
+          IP operates at the network layer of the OSI model.
+      - question: |
+          Which model layer corresponds to IP in the TCP/IP model?
+        answer: |
+          In the TCP/IP model, IP functions at the Internet layer.
+document_outline: |
+  The Wikipedia article on the Internet Protocol (IP) describes IP as the fundamental protocol responsible for addressing, routing, and delivering data packets across interconnected networks. It explains IP's connectionless nature, best-effort delivery model, and relationship with higher-level protocols like TCP. The article covers IPv4 and IPv6, including their differences in address size and design, and details about IP headers and routing behavior. It also discusses IP’s place in the Internet and OSI protocol models, emphasizing its role as the core component enabling global internetworking.
+document:
+  repo: $HOME/projects/instructlab/knowledge_docs
+  commit: 1b9157d621a8f7f012d8a42cd481250934c580d6
+  patterns:
+    - Internet_protocol.md

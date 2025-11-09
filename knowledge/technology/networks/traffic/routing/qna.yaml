@@ -1,0 +1,86 @@
+version: 3
+domain: Routing
+created_by: OliverB32
+seed_examples:
+  - context: |
+      Routing is the process of selecting paths in a network along which to send network traffic. It directs data packets from their source to their destination through intermediate nodes known as routers. Routing occurs at the network layer of the OSI model and is a fundamental function of packet-switched networks like the Internet.
+    questions_and_answers:
+      - question: |
+          What is routing in computer networks?
+        answer: |
+          Routing is the process of selecting paths in a network to direct data packets from a source to a destination.
+      - question: |
+          At which OSI layer does routing occur?
+        answer: |
+          Routing operates at the network layer of the OSI model.
+      - question: |
+          What devices are primarily responsible for routing network traffic?
+        answer: |
+          Routers are the primary devices responsible for routing data between networks.
+  - context: |
+      There are two main types of routing: static routing and dynamic routing. Static routing involves manually configuring routes, while dynamic routing uses protocols that automatically adjust routes based on network conditions. Dynamic routing protocols can detect topology changes and update routes without manual intervention.
+    questions_and_answers:
+      - question: |
+          What are the two main types of routing?
+        answer: |
+          The two main types of routing are static routing and dynamic routing.
+      - question: |
+          How does static routing differ from dynamic routing?
+        answer: |
+          Static routing uses manually configured routes, while dynamic routing automatically adjusts routes using routing protocols.
+      - question: |
+          Why is dynamic routing often preferred over static routing?
+        answer: |
+          Dynamic routing is preferred because it automatically adapts to network changes and failures without requiring manual updates.
+  - context: |
+      Routing protocols determine how routers communicate with each other to share information about network topology and reachability. Common interior routing protocols include OSPF (Open Shortest Path First), RIP (Routing Information Protocol), and EIGRP (Enhanced Interior Gateway Routing Protocol). Exterior routing between autonomous systems is typically handled by BGP (Border Gateway Protocol).
+    questions_and_answers:
+      - question: |
+          What is the purpose of a routing protocol?
+        answer: |
+          A routing protocol enables routers to exchange information about network topology and determine optimal paths for data packets.
+      - question: |
+          What are some common interior routing protocols?
+        answer: |
+          Common interior routing protocols include OSPF, RIP, and EIGRP.
+      - question: |
+          Which protocol is primarily used for routing between autonomous systems on the Internet?
+        answer: |
+          The Border Gateway Protocol (BGP) is used for routing between autonomous systems.
+  - context: |
+      A routing table is a data structure stored in a router that lists available routes to network destinations. Each entry typically contains the destination address, next hop, and metric value used to select the best route. Routers use this table to determine how to forward packets efficiently.
+    questions_and_answers:
+      - question: |
+          What is a routing table?
+        answer: |
+          A routing table is a data structure that contains information about routes to network destinations.
+      - question: |
+          What key information is typically stored in a routing table entry?
+        answer: |
+          Each routing table entry usually includes the destination address, next hop, and a metric indicating route cost.
+      - question: |
+          How do routers use the routing table?
+        answer: |
+          Routers consult the routing table to determine the best path for forwarding packets to their destinations.
+  - context: |
+      Routing can be classified based on its scope and function. Interior Gateway Protocols (IGPs) operate within a single autonomous system, while Exterior Gateway Protocols (EGPs) operate between autonomous systems. Routing can also be unicast, multicast, or anycast depending on how packets are addressed and delivered.
+    questions_and_answers:
+      - question: |
+          What is the difference between Interior and Exterior Gateway Protocols?
+        answer: |
+          Interior Gateway Protocols operate within a single autonomous system, while Exterior Gateway Protocols operate between autonomous systems.
+      - question: |
+          What are the main types of routing based on packet delivery methods?
+        answer: |
+          The main routing types are unicast, multicast, and anycast routing.
+      - question: |
+          What does unicast routing involve?
+        answer: |
+          Unicast routing involves sending packets from one source to a single specific destination.
+document_outline: |
+  The Wikipedia article on Routing explains how routing determines the path that data packets take across networks. It describes routing as a network-layer process that directs packets through routers from source to destination. The document covers the distinction between static and dynamic routing, the role of routing protocols like OSPF, RIP, EIGRP, and BGP, and the structure of routing tables. It also outlines classification
+document:
+  repo: $HOME/projects/instructlab/knowledge_docs
+  commit: 917b55485212148814ec4e344a13ccd8265068e0
+  patterns:
+    - Routing.md

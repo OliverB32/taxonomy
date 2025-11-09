@@ -1,0 +1,86 @@
+version: 3
+domain: OSI Protocols
+created_by: OliverB32
+seed_examples:
+  - context: |
+      The OSI protocols were a set of standards developed by the International Organization for Standardization (ISO) to support the Open Systems Interconnection (OSI) model. They were intended to define protocols for each layer of the OSI model and enable interoperability between computer systems and networks from different vendors.
+    questions_and_answers:
+      - question: |
+          What was the main purpose of the OSI protocols?
+        answer: |
+          The OSI protocols were designed to standardize communication functions across different systems and enable interoperability between products from different vendors.
+      - question: |
+          Who developed the OSI protocols?
+        answer: |
+          The OSI protocols were developed by the International Organization for Standardization (ISO).
+      - question: |
+          How do the OSI protocols relate to the OSI model?
+        answer: |
+          Each OSI protocol corresponded to one of the seven layers of the OSI model, defining the specific communication functions for that layer.
+  - context: |
+      The OSI model divides network communication into seven layers: physical, data link, network, transport, session, presentation, and application. Each layer provides specific services to the layer above it and relies on the layer below it. The model helps standardize how different systems communicate over a network.
+    questions_and_answers:
+      - question: |
+          What are the seven layers of the OSI model?
+        answer: |
+          The seven layers are physical, data link, network, transport, session, presentation, and application.
+      - question: |
+          What is the main purpose of the OSI model’s layered structure?
+        answer: |
+          The layered structure separates communication functions, allowing interoperability and modular design where each layer provides services to the one above it.
+      - question: |
+          How does the OSI model help with network communication?
+        answer: |
+          The OSI model standardizes communication functions, making it easier for different hardware and software systems to communicate effectively.
+  - context: |
+      Several OSI protocols were defined for specific layers. Examples include X.25 and CLNP (Connectionless Network Protocol) at the network layer, TP4 (Transport Protocol Class 4) at the transport layer, and FTAM (File Transfer, Access, and Management) at the application layer. These protocols were designed to provide complete end-to-end network services based on the OSI architecture.
+    questions_and_answers:
+      - question: |
+          Which OSI protocol operates at the transport layer?
+        answer: |
+          The Transport Protocol Class 4 (TP4) operates at the transport layer of the OSI model.
+      - question: |
+          What is an example of a network layer protocol in the OSI suite?
+        answer: |
+          Examples of OSI network layer protocols include X.25 and the Connectionless Network Protocol (CLNP).
+      - question: |
+          What is the purpose of the FTAM protocol?
+        answer: |
+          FTAM (File Transfer, Access, and Management) is an application-layer OSI protocol used for file exchange and remote file management.
+  - context: |
+      The OSI protocols were developed around the same time as the TCP/IP protocol suite. However, TCP/IP became more widely adopted because it was simpler, more practical, and already used extensively in early Internet development. As a result, the OSI protocol suite saw limited implementation outside academic and governmental networks.
+    questions_and_answers:
+      - question: |
+          How did the OSI protocols compare to TCP/IP in adoption?
+        answer: |
+          TCP/IP became more widely adopted than the OSI protocols because it was simpler and already widely used in early Internet infrastructure.
+      - question: |
+          Why did the OSI protocol suite see limited implementation?
+        answer: |
+          The OSI protocols were complex, developed more slowly, and lacked the widespread support that TCP/IP had in real-world networks.
+      - question: |
+          What was one key reason TCP/IP became the dominant protocol suite?
+        answer: |
+          TCP/IP’s practical deployment and simplicity made it more effective and easier to implement than the OSI protocols.
+  - context: |
+      Although the OSI protocols themselves were not widely adopted, the OSI model remains an important conceptual framework. It continues to be used as a reference for teaching, documentation, and network troubleshooting. Modern networking standards and technologies are often described in relation to OSI layers.
+    questions_and_answers:
+      - question: |
+          Is the OSI model still relevant today?
+        answer: |
+          Yes. The OSI model is still used as a conceptual reference for understanding and explaining network communication processes.
+      - question: |
+          How is the OSI model used in modern networking?
+        answer: |
+          It serves as a framework for describing how different networking technologies correspond to specific layers and functions.
+      - question: |
+          Why is the OSI model important for network education and troubleshooting?
+        answer: |
+          It provides a clear, structured way to analyze and diagnose network issues by isolating problems within specific layers.
+document_outline: |
+  The Wikipedia article on OSI protocols explains the standardized communication framework developed by the International Organization for Standardization (ISO) as part of the Open Systems Interconnection model. It describes how the OSI model divides networking into seven layers, the protocols designed for each layer, and how these aimed to promote interoperability. The article contrasts OSI protocols with the TCP/IP suite, detailing why TCP/IP became dominant, and highlights the lasting educational and conceptual influence of the OSI model in modern networking.
+document:
+  repo: $HOME/projects/instructlab/knowledge_docs
+  commit: 92f512fca80b0a5540e42f61ffca567105167c38
+  patterns:
+    - OSI_protocols.md

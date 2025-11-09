@@ -1,0 +1,40 @@
+version: 3
+task_description: |
+  Validate generated traffic against expected distributions and metrics: packet counts,
+  flow balance, protocol mix, timing statistics, and presence/absence of injected anomalies.
+created_by: OliverB32
+seed_examples:
+  - context: |
+      | Metric            | Expected | Observed |
+      |-------------------|----------|----------|
+      | Total packets     | 1000     | 995      |
+      | Mean interval ms  | 10       | 10.2     |
+    question: |
+      Is the observed traffic within a 5% tolerance for total packets and mean interval?
+    answer: |
+      Yes. Packet count deviation = 0.5% and mean interval deviation = 2% — both within 5%.
+  - context: |
+      Expected protocol mix: {TCP:70%, UDP:25%, ICMP:5%}
+      Observed: {TCP:60%, UDP:35%, ICMP:5%}
+    question: |
+      Which protocol is overrepresented and by how much?
+    answer: |
+      UDP is overrepresented by 10 percentage points (expected 25% observed 35%).
+  - context: |
+      Expected flows: 200 flows; Observed: 195 flows
+    question: |
+      Suggest a quick check to find why flows are missing.
+    answer: |
+      Check flow timeouts and aggregation rules (e.g., if short-lived flows were merged due to coarse timestamping), and inspect source/dest pair distribution.
+  - context: |
+      Timing stats: expected mean IAT 20ms, observed distribution shows heavy tail with 2% > 500ms.
+    question: |
+      How to report and interpret the heavy tail?
+    answer: |
+      Present median, 90th/99th percentiles; heavy tail indicates intermittent delays—investigate burst scheduling or simulated network events.
+  - context: |
+      Anomaly label: synthetic_port_scan expected but detection tool flagged none.
+    question: |
+      What validation steps to confirm anomaly injection succeeded?
+    answer: |
+      Review raw JSONL for SYN packet counts and port diversity, ensure timestamps and src IP were not sanitized away, and rerun detection on the specific time window.

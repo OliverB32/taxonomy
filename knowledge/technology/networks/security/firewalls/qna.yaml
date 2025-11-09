@@ -1,0 +1,86 @@
+version: 3
+domain: Firewalls
+created_by: OliverB32
+seed_examples:
+  - context: |
+      A firewall is a network security device or software application that monitors and controls incoming and outgoing network traffic based on an organization’s security policies. Firewalls establish a barrier between trusted and untrusted networks such as internal networks and the Internet. They can operate at various layers of the network stack from packet filtering to application-level inspection.
+    questions_and_answers:
+      - question: |
+          What is a firewall in computing?
+        answer: |
+          A firewall is a device or software that monitors and controls network traffic based on defined security policies, forming a barrier between trusted and untrusted networks.
+      - question: |
+          What is the main purpose of a firewall?
+        answer: |
+          The main purpose of a firewall is to enforce security policies by allowing, blocking, or logging traffic between different network zones.
+      - question: |
+          At which boundaries are firewalls commonly deployed?
+        answer: |
+          Firewalls are commonly deployed at the boundary between internal (trusted) networks and external (untrusted) networks, such as the Internet or DMZ.
+  - context: |
+      Firewalls can be classified by their inspection capabilities and deployment scope: packet-filtering firewalls, stateful inspection firewalls, proxy (application-level) firewalls, and next-generation firewalls (NGFW) which incorporate intrusion prevention, application awareness, and integrated threat intelligence.
+    questions_and_answers:
+      - question: |
+          What are some common types of firewalls?
+        answer: |
+          Common types of firewalls include packet-filtering firewalls, stateful inspection firewalls, proxy firewalls, and next-generation firewalls (NGFW).
+      - question: |
+          How does a stateful inspection firewall differ from a basic packet-filtering firewall?
+        answer: |
+          A stateful inspection firewall tracks the state of connections (such as TCP sessions) and makes decisions based on context, whereas a packet-filtering firewall evaluates each packet independently without context of prior packets.
+      - question: |
+          What capabilities do next-generation firewalls add beyond traditional firewalls?
+        answer: |
+          NGFWs typically include application-level inspection, intrusion prevention, threat intelligence integration, and user-based policies.
+  - context: |
+      The operation of firewalls includes setting rules or policies that define allowed and denied traffic, often specifying source and destination IP addresses, ports, protocols, and direction (ingress/egress). Firewalls may also support NAT (Network Address Translation), VPN termination, logging/audit, and monitoring.
+    questions_and_answers:
+      - question: |
+          How are firewall policies typically defined?
+        answer: |
+          Firewall policies normally specify rules based on source/destination IPs, ports, protocols, direction (ingress or egress), and actions (allow, deny, log).
+      - question: |
+          Can firewalls perform NAT or VPN functions?
+        answer: |
+          Yes, many firewalls include features like NAT translation and VPN termination as part of their deployment.
+      - question: |
+          Why is logging an important feature of firewalls?
+        answer: |
+          Logging enables administrators to audit traffic, investigate incidents, detect policy violations, and gather data for threat intelligence and forensics.
+  - context: |
+      While firewalls are a critical line of defence, they are not a panacea. Firewalls cannot protect against threats that originate from within the trusted network, mis-configured rules, or encrypted malicious traffic that the firewall cannot inspect. Additionally, complex rule sets can lead to misconfigurations and performance impact.
+    questions_and_answers:
+      - question: |
+          What are some limitations of firewalls?
+        answer: |
+          Limitations include inability to inspect encrypted traffic (unless integrated with decryption), inability to block internal threats, and risks from mis-configured rules.
+      - question: |
+          Why can encrypted traffic pose a challenge for firewalls?
+        answer: |
+          Because encrypted traffic hides payload contents, the firewall may only see metadata (IP, port) and cannot apply content-aware inspection without decryption.
+      - question: |
+          How can mis-configured firewall rules undermine security?
+        answer: |
+          Mis-configured rules can allow unintended traffic, create policy loopholes, or degrade performance by permitting too much trusted traffic or blocking legitimate traffic.
+  - context: |
+      Firewalls have evolved significantly from early perimeter packet filters to modern adaptive and cloud-native firewall solutions. They now may include cloud-based policy enforcement, zero-trust architecture integration, micro-segmentation, and automation for dynamic policy updates.
+    questions_and_answers:
+      - question: |
+          How have firewalls evolved over time?
+        answer: |
+          Firewalls have evolved from simple packet-filtering devices to stateful inspection, application-aware, next-generation and cloud-native solutions that integrate with broader security ecosystems.
+      - question: |
+          What is micro-segmentation and how do modern firewalls support it?
+        answer: |
+          Micro-segmentation is the division of a network into many isolated segments with independent security controls; modern firewalls support this by enforcing policies at a granular level (e.g., per-VM or per-workload).
+      - question: |
+          What role do firewalls play in zero-trust network architecture?
+        answer: |
+          In zero-trust networks, firewalls enforce least-privilege access between workloads, verify each session regardless of origin, and integrate identity/context into policy decisions rather than assuming trust based on network location.
+document_outline: |
+  The Wikipedia article on firewalls in computing describes how firewalls act as security devices or software that monitor and control network traffic according to security policies. The article covers various types of firewalls (packet-filtering, stateful inspection, proxy, next-generation), how traffic rules are configured (source/destination, ports, protocols), and the features they offer (NAT, VPN termination, logging). It also discusses their limitations (internal threats, encrypted traffic, mis-configuration) and how firewalls have evolved into modern solutions supporting zero-trust, micro-segmentation and cloud environments.
+document:
+  repo: $ILAB/knowledge_docs
+  commit: 28322d19467b7e6da050b0bad8324eeb1580da25
+  patterns:
+    - Firewall.md

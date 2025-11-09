@@ -1,0 +1,86 @@
+version: 3
+domain: Domain Name System
+created_by: OliverB32
+seed_examples:
+  - context: |
+      The Domain Name System (DNS) is a hierarchical and decentralized naming system for computers, services, and other resources connected to the Internet or a private network. It translates human-readable domain names, such as www.example.com, into IP addresses used by computers to identify each other on the network.
+    questions_and_answers:
+      - question: |
+          What does DNS stand for?
+        answer: |
+          DNS stands for Domain Name System.
+      - question: |
+          What is the primary purpose of DNS?
+        answer: |
+          DNS translates human-readable domain names into numerical IP addresses used by computers for network communication.
+      - question: |
+          Why is DNS important for Internet communication?
+        answer: |
+          DNS allows users to access websites and services using easy-to-remember names instead of IP addresses.
+  - context: |
+      The DNS structure is organized hierarchically, with different levels known as domains. At the top is the root domain, followed by top-level domains (TLDs) like .com, .org, and country codes such as .uk or .jp. Below these are second-level and subdomains, forming a distributed and scalable system of name resolution.
+    questions_and_answers:
+      - question: |
+          How is the DNS namespace organized?
+        answer: |
+          The DNS namespace is organized hierarchically, starting from the root domain, followed by top-level domains, second-level domains, and subdomains.
+      - question: |
+          What are some examples of top-level domains (TLDs)?
+        answer: |
+          Examples of TLDs include .com, .org, .net, and country-code domains like .uk and .jp.
+      - question: |
+          What is the function of the root domain in DNS?
+        answer: |
+          The root domain is the highest level in the DNS hierarchy and serves as the starting point for all domain name lookups.
+  - context: |
+      DNS resolution involves translating a domain name into its corresponding IP address. This process may involve multiple DNS servers, including recursive resolvers, root servers, TLD servers, and authoritative name servers. Recursive resolvers query these servers in sequence until they find the correct IP address for the requested domain.
+    questions_and_answers:
+      - question: |
+          What is DNS resolution?
+        answer: |
+          DNS resolution is the process of converting a domain name into its corresponding IP address.
+      - question: |
+          What role does a recursive resolver play in DNS?
+        answer: |
+          A recursive resolver handles DNS queries on behalf of clients and retrieves the correct IP address by querying other DNS servers.
+      - question: |
+          Which types of DNS servers are typically involved in the resolution process?
+        answer: |
+          The DNS resolution process involves recursive resolvers, root servers, TLD servers, and authoritative name servers.
+  - context: |
+      DNS resource records store information about domain names. Common record types include A (IPv4 address), AAAA (IPv6 address), MX (mail exchange), CNAME (canonical name), and NS (name server). These records are stored in zone files maintained by authoritative DNS servers.
+    questions_and_answers:
+      - question: |
+          What is a DNS resource record?
+        answer: |
+          A DNS resource record is an entry that stores information about a domain name, such as its IP address or mail server.
+      - question: |
+          What are some common DNS record types?
+        answer: |
+          Common DNS record types include A, AAAA, MX, CNAME, and NS records.
+      - question: |
+          Where are DNS records stored and managed?
+        answer: |
+          DNS records are stored in zone files maintained by authoritative DNS servers.
+  - context: |
+      Caching is an important feature of DNS that improves efficiency and reduces network load. When a resolver receives a DNS response, it stores the information for a set period defined by the Time to Live (TTL) value. Cached data allows future requests for the same domain to be resolved faster without querying the entire DNS hierarchy again.
+    questions_and_answers:
+      - question: |
+          What is DNS caching?
+        answer: |
+          DNS caching is the temporary storage of DNS query results to speed up future lookups and reduce server load.
+      - question: |
+          What does the TTL value in DNS represent?
+        answer: |
+          TTL, or Time to Live, specifies how long a DNS record should be cached before it expires.
+      - question: |
+          Why is DNS caching important for network performance?
+        answer: |
+          DNS caching improves network performance by reducing lookup times and minimizing repeated queries to DNS servers.
+document_outline: |
+  The Wikipedia article on the Domain Name System (DNS) describes it as a hierarchical, distributed naming system that translates domain names into IP addresses. It explains the DNS structure, including the root domain, top-level domains, and subdomains. The article details how DNS resolution works through recursive and authoritative servers, outlines common record types such as A, AAAA, MX, and CNAME, and highlights the importance of caching and TTL values for efficiency. Overall, DNS is presented as a core Internet service that enables user-friendly access to network resources.
+document:
+  repo: $HOME/projects/instructlab/knowledge_docs
+  commit: b7cc486d998c1bcbcb57813e38f94075af952064
+  patterns:
+    - Domain_Name_System.md

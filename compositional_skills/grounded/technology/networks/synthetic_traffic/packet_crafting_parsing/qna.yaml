@@ -1,0 +1,62 @@
+version: 3
+task_description: |
+  Interpret, construct, and decompose synthetic network packets into structured JSON
+  and produce simple human-readable packet descriptions (Ethernet, IP, TCP, UDP).
+created_by: OliverB32
+seed_examples:
+  - context: |
+      | Layer    | Field     | Value              |
+      |----------|-----------|--------------------|
+      | Ethernet | src_mac   | 00:11:22:33:44:55  |
+      | Ethernet | dst_mac   | AA:BB:CC:DD:EE:FF  |
+      | IP       | src_ip    | 192.168.1.10       |
+      | IP       | dst_ip    | 192.168.1.20       |
+      | TCP      | src_port  | 443                |
+      | TCP      | dst_port  | 51512              |
+    question: |
+      Convert this packet into a JSON structure with ethernet, ip, and tcp objects.
+    answer: |
+      {
+        "ethernet": {"src": "00:11:22:33:44:55", "dst": "AA:BB:CC:DD:EE:FF"},
+        "ip": {"src": "192.168.1.10", "dst": "192.168.1.20", "version": 4},
+        "tcp": {"src_port": 443, "dst_port": 51512}
+      }
+  - context: |
+      | Layer | Field    | Value       |
+      |-------|----------|-------------|
+      | IP    | src_ip   | 10.0.0.5    |
+      | IP    | dst_ip   | 10.0.0.1    |
+      | UDP   | src_port | 12345       |
+      | UDP   | dst_port | 53          |
+    question: |
+      What protocol and endpoints are used; summarize in one sentence.
+    answer: |
+      This is a UDP packet from 10.0.0.5:12345 to 10.0.0.1:53 (likely DNS query).
+  - context: |
+      Raw hex payload: "4500003c1c4640004006b1e6c0a80102c0a80101"
+    question: |
+      Parse the hex into IP header fields (src, dst, total length).
+    answer: |
+      IP total length = 60 (0x003c), src = 192.168.1.2, dst = 192.168.1.1.
+  - context: |
+      | Field      | Value              |
+      |------------|--------------------|
+      | src_ip     | 172.16.0.10        |
+      | dst_ip     | 172.16.0.20        |
+      | protocol   | ICMP               |
+      | icmp_type  | 8 (echo request)   |
+    question: |
+      Produce a compact JSON describing this ICMP packet.
+    answer: |
+      {"ip": {"src":"172.16.0.10","dst":"172.16.0.20"},"icmp":{"type":8,"code":0}}
+  - context: |
+      | Layer | Field      | Value                |
+      |-------|------------|----------------------|
+      | Eth   | vlan_tag   | 100                  |
+      | IP    | src_ip     | 192.0.2.10           |
+      | TCP   | flags      | SYN,ACK              |
+      | TCP   | window     | 65535                |
+    question: |
+      How would you represent VLAN + TCP flags in JSON for tooling?
+    answer: |
+      {"ethernet":{"vlan":100},"ip":{"src":"192.0.2.10"},"tcp":{"flags":["SYN","ACK"],"window":65535}}

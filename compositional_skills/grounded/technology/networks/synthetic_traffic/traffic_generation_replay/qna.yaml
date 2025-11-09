@@ -1,0 +1,42 @@
+version: 3
+task_description: |
+  Model synthetic traffic flows and produce replay schedules (packet sequences with timing)
+  and high-level instructions for deterministic or stochastic replay.
+created_by: OliverB32
+seed_examples:
+  - context: |
+      | Flow ID | src_ip    | dst_ip    | Proto | Packets | Avg interval (ms) |
+      |---------|-----------|-----------|-------|---------|-------------------|
+      | F1      | 10.0.0.2  | 10.0.0.1  | TCP   | 5       | 12                |
+    question: |
+      Produce a packet send schedule (timestamps relative to start) for F1 with deterministic spacing.
+    answer: |
+      [0.000, 0.012, 0.024, 0.036, 0.048] seconds — send 5 TCP packets from 10.0.0.2 to 10.0.0.1.
+  - context: |
+      Flow: HTTP-like exchange: client 10.1.1.2 -> server 10.1.1.10; request (1 pkt), server replies (3 pkts).
+    question: |
+      Describe a replay order and approximate inter-packet timings for a single request/response.
+    answer: |
+      Client sends request at t=0, server replies with first response packet at t=0.020, additional two follow at t=0.030 and t=0.042.
+  - context: |
+      | Flow | pkts | mean_ms | jitter_ms |
+      |------|------|---------|-----------|
+      | A    | 10   | 50      | 10        |
+    question: |
+      Generate 5 sample inter-arrival intervals in seconds using mean and jitter (approx).
+    answer: |
+      [0.050, 0.063, 0.041, 0.055, 0.047] seconds
+  - context: |
+      Replay mode: deterministic ordered replay of a saved trace with 100 packets.
+    question: |
+      What key constraints must the replay tool enforce to preserve semantics?
+    answer: |
+      Preserve original timestamps or apply a field scale factor, maintain packet order per flow, and keep inter-packet spacing within jitter tolerance.
+  - context: |
+      Flow set: 2 flows:
+      Flow1: 100 pkts, mean 10ms
+      Flow2: 50 pkts, mean 200ms
+    question: |
+      Propose a simple mixing schedule so flows run concurrently but keep relative rates.
+    answer: |
+      Interleave events using a priority queue by next-timestamp: emit Flow1 packets ~ every 10ms and Flow2 every 200ms; this keeps relative densities while allowing concurrency.

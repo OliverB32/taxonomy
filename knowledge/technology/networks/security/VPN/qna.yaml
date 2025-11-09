@@ -1,0 +1,86 @@
+version: 3
+domain: Virtual Private Networks
+created_by: OliverB32
+seed_examples:
+  - context: |
+      A virtual private network (VPN) extends a private network across a public network such as the Internet, enabling users to send and receive data as if their computing devices were directly connected to the private network. VPNs provide secure communications by encrypting traffic and often by using tunnelling protocols.
+    questions_and_answers:
+      - question: |
+          What does a VPN do in general terms?
+        answer: |
+          A VPN extends a private network across a public network so that users can send and receive data as if their devices were directly connected to the private network.
+      - question: |
+          How does a VPN provide secure communications?
+        answer: |
+          A VPN encrypts network traffic and uses tunnelling protocols so that data transmitted over a public network remains private and integrated with the private network.
+      - question: |
+          What is the main benefit of using a VPN for remote users?
+        answer: |
+          Remote users can access internal resources and services with the same level of trust and security as if they were connected locally to the corporate network.
+  - context: |
+      VPNs typically involve two main components: the client side (endpoint) and the server side (VPN gateway). Common tunnelling protocols include IPsec, SSL/TLS (as used in secure remote-access VPNs), L2TP, PPTP (legacy), and OpenVPN. These protocols encapsulate and encrypt data packets so they can travel securely over public networks.
+    questions_and_answers:
+      - question: |
+          What are the two main components of a VPN setup?
+        answer: |
+          The two main components are the VPN client endpoint and the VPN gateway/server that connects to the private network.
+      - question: |
+          Name at least three common VPN tunnelling protocols.
+        answer: |
+          Common VPN tunnelling protocols include IPsec, SSL/TLS (such as in OpenVPN), L2TP, and historically PPTP.
+      - question: |
+          What is the purpose of encapsulation in a VPN tunnel?
+        answer: |
+          Encapsulation wraps a packet inside a secure tunnel protocol packet, so it travels across the public network while appearing to originate and terminate within the private network.
+  - context: |
+      VPNs are used for a variety of purposes: securing remote access for employees, protecting traffic on public Wi-Fi, connecting branch offices (site-to-site VPNs), and accessing geo-restricted content. Business VPNs and consumer-VPN services differ in their management, privacy policies and use-cases.
+    questions_and_answers:
+      - question: |
+          What is a site-to-site VPN?
+        answer: |
+          A site-to-site VPN connects two or more fixed locations (such as branch offices) over the Internet to form a single private network.
+      - question: |
+          Why might someone use a consumer-VPN service?
+        answer: |
+          A consumer-VPN can protect traffic when using untrusted public Wi-Fi, help maintain privacy, and bypass region-based content restrictions.
+      - question: |
+          How do business VPNs and consumer VPNs differ?
+        answer: |
+          Business VPNs are typically managed by the organisation, emphasising internal resource access and security policies, whereas consumer VPNs focus more on privacy, anonymity and geo-unblocking.
+  - context: |
+      While VPNs offer many benefits, they also introduce risks and performance considerations. Encryption and tunnelling add overhead and latency, some protocols are deprecated (e.g., PPTP), and if the VPN endpoint is compromised or logs are mis-handled, user privacy may be exposed. Additionally, poorly configured VPNs can allow “split-tunnelling” which may inadvertently expose internal resources.
+    questions_and_answers:
+      - question: |
+          What are some performance implications of using a VPN?
+        answer: |
+          VPNs add overhead for encryption and encapsulation, often increasing latency and reducing throughput compared to direct connections.
+      - question: |
+          Why is PPTP considered deprecated for VPNs?
+        answer: |
+          PPTP is deprecated because of known security vulnerabilities in its encryption and authentication mechanisms.
+      - question: |
+          What is "split-tunnelling" and what risk does it pose?
+        answer: |
+          Split-tunnelling allows a client to send some traffic through the VPN and some directly over the Internet, which may expose internal network resources to risk if not carefully controlled.
+  - context: |
+      VPN deployment, management and regulation vary globally. Many organisations use hardware appliances or cloud-based VPN gateways, centralised authentication (e.g., RADIUS, SAML), and detailed logging/auditing. Consumer VPNs operate under different legal/privacy regimes depending on country, and some jurisdictions require logging of metadata or retention policies.
+    questions_and_answers:
+      - question: |
+          What authentication methods are commonly used with VPNs?
+        answer: |
+          Common authentication methods include RADIUS, SAML, certificates and pre-shared keys (PSKs) depending on the VPN type.
+      - question: |
+          Why do legal and regulatory considerations matter for VPN services?
+        answer: |
+          Because jurisdictions may mandate data retention, logging of VPN metadata, or restrict VPN usage, which impacts privacy and service trustworthiness.
+      - question: |
+          What are some typical management practices for corporate VPNs?
+        answer: |
+          Corporate VPNs often use centrally managed gateways, enforce strong cipher suites and access policies, monitor session logs, and may integrate multi-factor authentication (MFA) for user endpoints.
+document_outline: |
+  The Wikipedia article on Virtual Private Networks (VPNs) defines a VPN as a technology that securely extends private networks across public infrastructure using encryption and tunnelling protocols. The article outlines the components of a VPN solution (client and gateway), lists common tunnelling protocols (IPsec, SSL/TLS, L2TP, PPTP, OpenVPN), and describes typical use-cases such as remote access, branch office connectivity and consumer privacy services. It also addresses performance and security trade-offs, deprecated protocols, risks like split-tunnelling, and organisational/ regulatory aspects of VPN deployment and use.
+document:
+  repo: $ILAB/knowledge_docs
+  commit: e5fab392ad3b8f6ffb8af965f5c7658ec355eb0d
+  patterns:
+    - Virtual_private_network.md

@@ -1,0 +1,46 @@
+version: 3
+task_description: |
+  Inject controlled, benign anomaly patterns (bursts, scans, malformed headers, high-error rates)
+  to increase dataset diversity. All examples are synthetic-only and non-executable.
+created_by: OliverB32
+seed_examples:
+  - context: |
+      | Event | Description                          |
+      |-------|--------------------------------------|
+      | E1    | 50 SYN packets to sequential ports   |
+    question: |
+      What benign anomaly pattern does E1 simulate and how to label it?
+    answer: |
+      Simulates a TCP port scan (SYN scan). Label as "synthetic_port_scan:syn_probe".
+  - context: |
+      | Event | Description                        |
+      |-------|------------------------------------|
+      | E2    | Burst: 200 packets in 100ms        |
+    question: |
+      How to parameterize this burst for generation?
+    answer: |
+      Set burst window=0.100s, packet_count=200, per-packet interval ≈0.0005s (or use Poisson with high lambda).
+  - context: |
+      | Event | Description                        |
+      |-------|------------------------------------|
+      | E3    | Sequence of packets with increasing TTLs and a final ICMP unreachable |
+    question: |
+      What benign scenario could this emulate?
+    answer: |
+      Emulates traceroute-like behavior or path discovery (incrementing TTLs causing ICMP replies).
+  - context: |
+      | Event | Description                        |
+      |-------|------------------------------------|
+      | E4    | Packets with small checksum errors |
+    question: |
+      How should these be represented in JSON traces for analysis?
+    answer: |
+      Add metadata {"checksum_valid": false, "error_type": "checksum"}; do not include exploit payloads.
+  - context: |
+      | Event | Description                        |
+      |-------|------------------------------------|
+      | E5    | Slowloris-like pattern: many partial HTTP requests held open |
+    question: |
+      How to simulate this at packet level without harmful content?
+    answer: |
+      Emit many small TCP segments with incomplete application-layer data and long inter-segment delays; label as "synthetic_slow_connect".

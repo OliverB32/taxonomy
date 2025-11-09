@@ -1,0 +1,86 @@
+version: 3
+domain: Denial of Service attacks
+created_by: OliverB32
+seed_examples:
+  - context: |
+      A denial-of-service (DoS) attack aims to make a machine, network resource, or service unavailable to its intended users by overwhelming it with traffic or exploiting resource exhaustion vulnerabilities. When coordinated from many distributed sources the attack is called a distributed denial-of-service (DDoS) attack.
+    questions_and_answers:
+      - question: |
+          What is a denial-of-service (DoS) attack?
+        answer: |
+          A DoS attack attempts to make a system or service unavailable to legitimate users by overwhelming resources or exploiting weaknesses that cause the service to fail.
+      - question: |
+          How does a distributed denial-of-service (DDoS) attack differ from a DoS attack?
+        answer: |
+          A DDoS attack originates from multiple distributed systems (often compromised devices), making it harder to block and increasing the volume and impact compared with a single-source DoS.
+      - question: |
+          What are common motivations behind DoS/DDoS attacks?
+        answer: |
+          Motivations include extortion, political activism or protest, competitive disruption, distraction for other malicious activity, or experimentation and notoriety.
+  - context: |
+      DoS attacks are commonly classified by their method and target. Broad categories include volumetric attacks that saturate bandwidth, protocol attacks that exhaust processing or state (for example TCP SYN floods), and application-layer attacks that target specific services (for example HTTP floods).
+    questions_and_answers:
+      - question: |
+          What is a volumetric DoS attack?
+        answer: |
+          A volumetric attack floods the target or its links with high volumes of traffic to consume bandwidth and prevent legitimate traffic from reaching the service.
+      - question: |
+          What is a protocol-level DoS attack?
+        answer: |
+          Protocol attacks exploit weaknesses in protocol handling or stateful resources (for example TCP connection tables) to exhaust server or network device resources.
+      - question: |
+          What characterizes an application-layer DoS attack?
+        answer: |
+          Application-layer attacks send seemingly legitimate requests (for example HTTP GETs) designed to exhaust resources at the service/application level, often using lower bandwidth but high computational cost per request.
+  - context: |
+      Amplification and reflection attacks use third-party servers to amplify traffic toward a victim. An attacker sends small spoofed requests to servers that reply with larger responses sent to the victim. Common amplification vectors include misconfigured DNS, NTP, or other UDP-based services.
+    questions_and_answers:
+      - question: |
+          What is an amplification attack?
+        answer: |
+          An amplification attack uses a protocol or service that responds with much larger packets than the request, allowing attackers to amplify the volume of traffic sent to a victim.
+      - question: |
+          How does a reflection attack work in the context of amplification?
+        answer: |
+          The attacker spoofs the victim's IP as the source of requests to reflectors (open servers); the reflectors then send their larger responses to the victim, overwhelming it.
+      - question: |
+          Name some common services used for amplification attacks.
+        answer: |
+          Common amplification vectors include misconfigured DNS servers, NTP servers, and other UDP-based services that return larger responses.
+  - context: |
+      Attackers frequently build botnets of compromised devices (including IoT devices) to generate or coordinate DDoS traffic. Famous examples of botnet-enabled DDoS incidents have used malware like Mirai to conscript vulnerable devices.
+    questions_and_answers:
+      - question: |
+          What role do botnets play in modern DDoS attacks?
+        answer: |
+          Botnets provide many distributed sources that can generate high volumes of traffic or coordinated requests, greatly increasing the scale and resilience of DDoS attacks.
+      - question: |
+          Why are IoT devices often used in botnets?
+        answer: |
+          Many IoT devices are insecurely configured, run outdated software, or use default credentials, making them easy to compromise and enlist into botnets.
+      - question: |
+          What is an example of malware that has been used to build large DDoS botnets?
+        answer: |
+          Malware families such as Mirai have been used to infect vulnerable IoT devices and form large-scale DDoS botnets.
+  - context: |
+      Defending against DoS and DDoS requires layered mitigation: network- and application-level filtering, rate limiting, traffic scrubbing services, CDN use, capacity overprovisioning, and coordinated responses with ISPs. Detection and mitigation often rely on traffic analytics, anomaly detection, and quick reconfiguration to drop malicious flows.
+    questions_and_answers:
+      - question: |
+          What are common strategies to mitigate DDoS attacks?
+        answer: |
+          Mitigation strategies include rate limiting, traffic filtering, using scrubbing or mitigation services, leveraging CDNs to absorb traffic, filtering at ISP edges, and deploying application-level protections.
+      - question: |
+          How can CDNs help during an application-layer DDoS?
+        answer: |
+          CDNs distribute traffic across many geographically dispersed servers, absorbing and caching legitimate requests and reducing load on origin servers.
+      - question: |
+          Why is collaboration with ISPs important during a large DDoS?
+        answer: |
+          ISPs can apply upstream filtering, blackholing, or traffic diversion to mitigate volumetric attacks before they saturate the victim's local links.
+document_outline: |
+  The Wikipedia article on denial-of-service attacks explains how attackers make systems or services unavailable by overwhelming network bandwidth, exhausting protocol state, or targeting application resources. It distinguishes DoS and DDoS, describes volumetric, protocol, and application-layer attack types, and details amplification/reflection techniques that increase attack impact. The article covers the use of botnets (including IoT-based botnets) to scale attacks and summarizes mitigation approaches such as filtering, rate limiting, CDNs, scrubbing services, and ISP cooperation.
+document:
+  repo: $ILAB/knowledge_docs
+  commit: 97d0928e6cd7b268d146f124a4a9941c7205be4b
+  patterns:
+    - DoS.md
